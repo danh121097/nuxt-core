@@ -28,5 +28,5 @@ if (typeof localStorage === 'undefined') {
     length: 0,
     key: vi.fn()
   };
-  (globalThis as any).localStorage = storageMock;
+  globalThis.localStorage = storageMock;
 }
