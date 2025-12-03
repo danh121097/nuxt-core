@@ -1,11 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import localePersistencePlugin from '../../../app/plugins/locale-persistence.client';
 
 // Stub defineNuxtPlugin before import
 const defineNuxtPluginMock = vi.fn((callback) => callback);
 vi.stubGlobal('defineNuxtPlugin', defineNuxtPluginMock);
-
-// Import the plugin
-import localePersistencePlugin from '../../../app/plugins/locale-persistence.client';
 
 describe('locale-persistence plugin', () => {
   const setLocaleMock = vi.fn();

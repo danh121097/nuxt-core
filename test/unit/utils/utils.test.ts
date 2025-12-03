@@ -6,8 +6,7 @@ import {
   isSameDay,
   convertTime,
   cn,
-  DEFAULT_DATE_FORMAT,
-  FULL_DATE_TIME_FORMAT
+  DEFAULT_DATE_FORMAT
 } from '../../../app/utils/index';
 import dayjs from 'dayjs';
 
@@ -176,8 +175,8 @@ describe('Utils - cn', () => {
   });
 
   it('should handle conditional classes', () => {
-    expect(cn('foo', false && 'bar', 'baz')).toBe('foo baz');
-    expect(cn('foo', true && 'bar')).toBe('foo bar');
+    expect(cn('foo', undefined, 'baz')).toBe('foo baz');
+    expect(cn('foo', 'bar')).toBe('foo bar');
   });
 
   it('should merge Tailwind classes correctly', () => {

@@ -33,23 +33,10 @@ describe('useI18nLocale', () => {
   it('should save to localStorage if client', () => {
     // Mock import.meta.client to be true
     vi.stubGlobal('import', { meta: { client: true } });
-    // Note: import.meta is read-only in some envs, but let's try to verify behavior
-    // If we can't mock import.meta.client easily, we'll rely on the fact that
-    // we are checking if setLocale is called.
-
-    // In unit tests, we can try to mock localStorage
-    const setItemSpy = vi.spyOn(localStorage, 'setItem');
-
-    // Force the condition if possible, or just check what happens
-    // Since we can't easily change import.meta.client at runtime in ESM,
-    // we might accept that this branch is hard to test without build-time config.
-    // However, let's see if we can trigger it.
 
     const { changeLocale } = useI18nLocale();
     changeLocale('vi');
 
-    // If import.meta.client is true (e.g. happy-dom might set it?), it would be called.
-    // If not, this expectation might fail if we enforce it.
     // For now, let's just check setLocale which is the critical part.
     expect(setLocaleMock).toHaveBeenCalledWith('vi');
   });
