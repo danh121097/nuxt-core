@@ -12,6 +12,9 @@ export default defineNuxtConfig({
   devtools: {
     enabled: false
   },
+  nitro: {
+    preset: 'bun'
+  },
   css: ['./app/scss/plugins.css', './app/scss/app.scss'],
   vite: {
     plugins: [tailwindcss()]
